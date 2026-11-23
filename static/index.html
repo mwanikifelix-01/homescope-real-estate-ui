@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homescope - see what sells and where</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="top">
+        <div class="wrap">
+            <h1>Homescope</h1>
+            <p class="tagline">See which home sell best in the US city and which to get a closer look</p>
+            <form id="search-form" class="search">
+                <label>City
+                    <input id="city" type="text" placeholder="e.g Atlanta" maxlength="50" required>
+                </label>
+                <label>State
+                    <select id="state" required></select>
+                </label>
+                <button type="submit" id="search-btn">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <p id="message" class="message" role="status">Enter city and state to begin</p>
+
+        <section id="results" hidden>
+            <h2 id="market-title"></h2>
+            <div id="titles" class="titles"></div>
+
+            <nav class="tabs" role="tablist">
+                <button class="tab active" data-tab="homes" roles="tab">Homes</button>
+                <button class="tab" data-tab="best" role="tab">What sells best</button>
+                <button class="tab" data-tab="invest" role="tab">Where to invest</button>
+            </nav>
+
+            <!-- Tab 1: homes -->
+            <div id="tab-homes" class="panel">
+                <div class="controls">
+                    <label>Show
+                        <select id="f-view">
+                            <option value="for-sale">For sale</option>
+                            <option value="sold">Recently sold</option>
+                        </select>
+                    </label>
+                    <label>Search
+                        <input id="f-text" type="search" placeholder="Adress or ZIP">
+                    </label>
+                    <label>Type
+                        <select id="f-type"></select>
+                    </label>
+                    <label>Min beds
+                        <select id="f-beds">
+                            <option value="0">Any</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </label>
+                    <label>Max price ($)
+                        <input id="f-price" type="number" min="0" step="10000" placeholder="No limits">
+                    </label>
+                    <label>Sort by
+                        <select id="f-sort">
+                            <option value="price-asc">Price: low to high</option>
+                            <option value="price-desc">Price: high to low</option>
+                            <option value="ppsf-asc">$ per sqft: low to high</option>
+                            <option value="sqft-desc">Size: largedt first</option>
+                            <option value="days-asc">Days on market: fewest first</option>
+                        </select>
+                    </label>
+                </div>
+                <p id="count" class="muted"></p>
+                <div id="cards" class="cards"></div>
+                <button id="more" class="secondary" hidden>Show more</button>
+            </div>
+
+            <!-- Tab 2: what sells best-->
+            <div id="tab-best" class="panel" hidden>
+                <p id="best-insight" class="insight"></p>
+                <div class="two-col">
+                    <div>
+                        <h3>Recent sales by home type</h3>
+                        <div id="bars-type"></div>
+                    </div>
+                    <div>
+                        <h3>Recent sales by bedrooms</h3>
+                        <div id="bars-bed"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: where to invest -->
+            <div id="tab-invest" class="panel" hidden>
+                <p id="invest-insight" class="insight"></p>
+                <h3>ZIP codes in this <span class="muted">(click a column to sort)</span></h3>
+                <div class="table-scroll">
+                    <table id="zip-table">
+                        <thead>
+                            <tr>
+                                <th data-key="zip">ZIP code</th>
+                                <th data-key="sold_count">Recently sold</th>
+                                <th data-key="active_count">For sale now</th>
+                                <th data-key="median_sold">Median sold prices</th>
+                                <th data-key="median_list">Median asking prices</th>
+                                <th data_key="median_ppsf">Median $ / sqft</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <h3>Compare cities you searched</h3>
+                <div class="tablescroll">
+                    <table id="compare-table">
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Median asking</th>
+                                <th>Median sold</th>
+                                <th>Median $ / sqft</th>
+                                <th>Days to sell</th>
+                                <th>For sale</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <p class="muted small">Figures are based on a sample of current listings and recent sales. They are a
+                    starting point for research, not financial advice</p>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="detail">
+        <button id="detail-close" class="close" aria-label="Close">&times;</button>
+        <div id="detail-body"></div>
+    </dialog>
+
+    <footer class="wrap footer">
+        <span>Data: <a href="https://rapidapi.com/apidojo/api/realty-in-us" target="_blank" rel="noopener">Realty in US
+                API</a> on RapidAPI</span>
+        <span id="served-by"></span>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
