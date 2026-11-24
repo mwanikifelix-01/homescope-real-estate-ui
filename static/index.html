@@ -30,10 +30,10 @@
 
         <section id="results" hidden>
             <h2 id="market-title"></h2>
-            <div id="titles" class="titles"></div>
+            <div id="tiles" class="tiles"></div>
 
             <nav class="tabs" role="tablist">
-                <button class="tab active" data-tab="homes" roles="tab">Homes</button>
+                <button class="tab active" data-tab="homes" role="tab">Homes</button>
                 <button class="tab" data-tab="best" role="tab">What sells best</button>
                 <button class="tab" data-tab="invest" role="tab">Where to invest</button>
             </nav>
@@ -43,12 +43,12 @@
                 <div class="controls">
                     <label>Show
                         <select id="f-view">
-                            <option value="for-sale">For sale</option>
+                            <option value="for_sale">For sale</option>
                             <option value="sold">Recently sold</option>
                         </select>
                     </label>
                     <label>Search
-                        <input id="f-text" type="search" placeholder="Adress or ZIP">
+                        <input id="f-text" type="search" placeholder="Address or ZIP">
                     </label>
                     <label>Type
                         <select id="f-type"></select>
@@ -71,7 +71,7 @@
                             <option value="price-asc">Price: low to high</option>
                             <option value="price-desc">Price: high to low</option>
                             <option value="ppsf-asc">$ per sqft: low to high</option>
-                            <option value="sqft-desc">Size: largedt first</option>
+                            <option value="sqft-desc">Size: largest first</option>
                             <option value="days-asc">Days on market: fewest first</option>
                         </select>
                     </label>
@@ -91,7 +91,7 @@
                     </div>
                     <div>
                         <h3>Recent sales by bedrooms</h3>
-                        <div id="bars-bed"></div>
+                        <div id="bars-beds"></div>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
             <!-- Tab 3: where to invest -->
             <div id="tab-invest" class="panel" hidden>
                 <p id="invest-insight" class="insight"></p>
-                <h3>ZIP codes in this <span class="muted">(click a column to sort)</span></h3>
+                <h3>ZIP codes in this city<span class="muted">(click a column to sort)</span></h3>
                 <div class="table-scroll">
                     <table id="zip-table">
                         <thead>
@@ -109,14 +109,14 @@
                                 <th data-key="active_count">For sale now</th>
                                 <th data-key="median_sold">Median sold prices</th>
                                 <th data-key="median_list">Median asking prices</th>
-                                <th data_key="median_ppsf">Median $ / sqft</th>
+                                <th data-key="median_ppsf">Median $ / sqft</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                 </div>
                 <h3>Compare cities you searched</h3>
-                <div class="tablescroll">
+                <div class="table-scroll">
                     <table id="compare-table">
                         <thead>
                             <tr>
