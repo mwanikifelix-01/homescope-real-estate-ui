@@ -44,8 +44,8 @@ Thank you to the API developers. The listing data and photos belong to their ori
 You need Python 3.8 or newer and a RapidAPI key (subscribe to the API on the page linked above; there is a free plan).
 
 ```bash
-git clone <YOUR_REPO_URL>
-cd <YOUR_REPO_NAME>
+git clone https://github.com/mwanikifelix-01/homescope-real-estate-ui.git
+cd homescope-real-estate-ui
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
