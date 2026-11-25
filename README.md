@@ -73,7 +73,7 @@ The app runs on **Web01** and **Web02** (Gunicorn behind Nginx) and **Lb01** dis
 ```bash
 sudo apt update
 sudo apt install -y python3-venv python3-pip nginx git
-sudo git clone <YOUR_REPO_URL> /var/www/homescope
+sudo git clone https://github.com/mwanikifelix-01/homescope-real-estate-ui.git /var/www/homescope
 sudo chown -R $USER:$USER /var/www/homescope
 cd /var/www/homescope
 python3 -m venv venv
@@ -140,8 +140,8 @@ frontend homescope_front
 backend homescope_back
     balance roundrobin
     option httpchk GET /
-    server web01 <WEB01_IP>:80 check
-    server web02 <WEB02_IP>:80 check
+    server web01 3.9.17.146:80 check
+    server web02 18.130.224.177:80 check
 ```
 
 ```bash
@@ -157,7 +157,7 @@ sudo systemctl restart haproxy
 Every response has an `X-Served-By` header with the name of the server that answered (it is also shown at the bottom of the page).
 
 ```bash
-for i in 1 2 3 4; do curl -sI http://<LB01_IP>/ | grep -i x-served-by; done
+for i in 1 2 3 4; do curl -sI http://35.176.54.28/ | grep -i x-served-by; done
 ```
 
 The output should alternate between the two servers. Then stop one server (`sudo systemctl stop nginx` on Web01), repeat the command and confirm that the site still works through Web02. Start Nginx again afterwards.
