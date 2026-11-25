@@ -9,7 +9,7 @@ HomeScope is a small web app that helps people understand a US housing market be
 Clicking a home opens its details (photos, description, year built, price history).
 
 - **Live site (load balancer):** http://35.176.54.28
-- **Demo video:** `<LINK_TO_VIDEO>`  <!-- TODO: add your link -->
+- **Demo video:** https://drive.google.com/file/d/1Q9QGw1MMU-tYzk5OKCVQ4e4iK4CfY3Zy/view?usp=sharing
 
 ## How it works
 
